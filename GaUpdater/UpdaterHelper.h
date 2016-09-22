@@ -1,7 +1,8 @@
 #pragma once
 
 #include <afxinet.h>
-#include "galib/util/date.h"
+
+const time_t INVALID_DATE = 0;
 
 class FileVersion
 {
@@ -22,10 +23,16 @@ public:
 
 struct UpdateInfo
 {
+	UpdateInfo()
+		: releaseDate(INVALID_DATE)
+	{
+		
+	}
+
 	CString url;
 	CString name;
 	CString details;
-	galib::util::DateTime releaseDate;
+	time_t releaseDate;
 	CString urlMD5Hash;
 	CString urlSHA1Hash;
 	FileVersion version;

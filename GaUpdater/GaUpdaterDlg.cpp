@@ -213,9 +213,9 @@ void CGaUpdaterDlg::updateVersionInfo()
 		str.Format(_T("%d.%d.%d.%d"), updateInfo.version.V1, updateInfo.version.V2, updateInfo.version.V3, updateInfo.version.V4);
 		m_txtLatestVersion.SetWindowText(str);
 
-		if (updateInfo.releaseDate.isValid())
+		if (updateInfo.releaseDate == INVALID_DATE)
 		{
-			COleDateTime releaseDate(updateInfo.releaseDate.toTimeT());
+			COleDateTime releaseDate(updateInfo.releaseDate);
 			m_txtReleaseDate.SetWindowText(releaseDate.Format(VAR_DATEVALUEONLY));
 		}
 		else

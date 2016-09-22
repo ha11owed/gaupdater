@@ -6,7 +6,6 @@
 
 using namespace rapidxml;
 using namespace std;
-using namespace galib::util;
 
 #define BUFFER_SIZE 1024*8
 
@@ -310,7 +309,7 @@ bool CUpdaterHelper::downloadUpdateInfo(LPCTSTR url, UpdateInfo& outUpdateInfo)
 		outUpdateInfo.name = ReadNodeContent(rootNode, "name");
 		// releaseDate
 		string releaseDate(ReadNodeContent(rootNode, "date"));
-		outUpdateInfo.releaseDate = DateTime::parseStrUTC(releaseDate);
+		outUpdateInfo.releaseDate = StrToTimeUTC(DATETIME_FMT, releaseDate.c_str());
 		// md5
 		outUpdateInfo.urlMD5Hash = ReadNodeContent(rootNode, "urlMD5Hash");
 		// sha1
